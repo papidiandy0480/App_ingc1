@@ -5,35 +5,35 @@ import "package:flutter/material.dart";
 
 void main() {
   // Point d’entrée de l’application Flutter
-  // Cette instruction démarre l’application
-  // en utilisant le widget MonApplication comme racine
+  // runApp permet de lancer l’application en affichant le widget principal
   runApp(const MonApplication());
 }
 
-// StatelessWidget : widget dont l’interface ne change pas
+// StatelessWidget : widget dont le contenu ne change pas dans le temps
 class MonApplication extends StatelessWidget {
-  // Le constructeur reçoit une clé optionnelle
-  // super.key permet d’appeler le constructeur de la classe parente
+  // super.key permet d'identifier le widget dans l’arbre des widgets
   const MonApplication({super.key});
 
-  @override // Méthode redéfinie depuis la classe StatelessWidget
+  @override
+  // Méthode héritée de StatelessWidget
+  // Elle décrit l’interface graphique du widget
   Widget build(BuildContext context) {
-    // MaterialApp représente la structure globale de l’application
-    // C’est ici qu’on configure le titre, la page d’accueil et les routes
+    // MaterialApp représente la structure générale de l’application
+    // C’est ici qu’on configure le thème, les routes et la page principale
     return MaterialApp(
       title: "Premiere Application",
 
-      // Page affichée au démarrage de l’application
+      // Page affichée au lancement de l’application
       home: const PageAccueil(),
 
-      // Définition des différentes routes de navigation
+      // routes permet de définir les différentes pages accessibles par navigation
       routes: {
         "/accueil": (context) => PageAccueil(),
         "/profil": (context) => PageProfile(),
         "/parametres": (context) => PageParametre(),
       },
 
-      // Page affichée lorsqu’une route demandée n’existe pas
+      // Page affichée lorsque la route demandée n’existe pas
       onUnknownRoute: (context) => MaterialPageRoute(
         builder: (context) => const PageAccueil(),
       ),
@@ -41,4 +41,4 @@ class MonApplication extends StatelessWidget {
   }
 }
 
-// StatefulWidget : widget dont le contenu peut évoluer dans le temps
+// StatefulWidget : widget dont le contenu peut évoluer (non utilisé ici)
